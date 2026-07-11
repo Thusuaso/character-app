@@ -1,0 +1,34 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Get a free hosted Postgres database in seconds: `npx create-db`
+
+generator client {
+  provider = "prisma-client"
+  output   = "../src/generated/prisma"
+  moduleFormat="cjs"
+}
+
+datasource db {
+  provider = "sqlite"
+}
+
+
+enum Status {
+  ALIVE 
+  DEAD 
+  UNKNOWN
+}
+enum Gender {
+  MALE 
+  FEMALE 
+  UNKNOWN
+}
+model Character {
+  id Int @id @default(autoincrement())
+  image String
+  name String
+  status Status
+  gender Gender
+  description String
+}
